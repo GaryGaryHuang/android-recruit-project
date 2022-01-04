@@ -2,4 +2,9 @@
     <string name="app_name">android-recruit-project</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_overview">Overview</string>
+
+    <string name="cover">封面</string>
+    <string name="countdown">倒數</string>
+    <string name="fundraising">募資中</string>
+    <string name="course_started">已開課</string>
 </resources>
