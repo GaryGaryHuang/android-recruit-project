@@ -1,12 +1,78 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext {
+        android_core_version = '1.7.0'
+        app_compat_version = '1.4.0'
+        material_version = '1.4.0'
+        constraint_layout_version = '2.1.2'
+        navigation_version = '2.3.5'
+        lifecycle_version = '2.4.0'
+        swipe_refresh_layout_version = '1.1.0'
+        brower_version = '1.4.0'
+
+        coroutines_version = '1.6.0'
+        gson_version = '2.8.9'
+        moshi_version = '1.13.0'
+        okhttp_version = '4.9.3'
+        retrofit_version = '2.9.0'
+        glide_version = '4.12.0'
+
+        libraries = [
+                "androidx.core:core-ktx:$android_core_version",
+                "androidx.appcompat:appcompat:$app_compat_version",
+                "com.google.android.material:material:$material_version",
+                "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
+
+                "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+                "androidx.navigation:navigation-ui-ktx:$navigation_version",
+
+                "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+                "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+
+                "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_layout_version",
+                "androidx.browser:browser:$brower_version",
+        ]
+
+        coroutines = [
+                "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+        ]
+
+        serialization = [
+                "com.google.code.gson:gson:$gson_version",
+                "com.squareup.moshi:moshi-kotlin:$moshi_version",
+        ]
+
+        serializationKapt = [
+                "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+        ]
+
+        network = [
+                "com.squareup.okhttp3:okhttp-bom:$okhttp_version",
+                "com.squareup.okhttp3:okhttp",
+                "com.squareup.okhttp3:logging-interceptor",
+
+                "com.squareup.retrofit2:retrofit:$retrofit_version",
+                "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                "com.squareup.retrofit2:converter-moshi:$retrofit_version",
+
+                "com.github.bumptech.glide:glide:$glide_version",
+                "com.github.bumptech.glide:annotations:$glide_version",
+                "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+        ]
+
+        network_kapt = [
+                "com.github.bumptech.glide:compiler:$glide_version"
+        ]
+    }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
