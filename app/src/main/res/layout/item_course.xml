@@ -44,12 +44,18 @@
         android:layout_width="0dp" android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/cv_course"
         app:layout_constraintLeft_toLeftOf="@+id/tv_course" app:layout_constraintRight_toRightOf="@+id/tv_course"
-        style="?android:attr/progressBarStyleHorizontal"/>
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100" tools:progress="50"/>
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_progress" android:visibility="visible"
+        android:id="@+id/group_fundraising" android:visibility="visible"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         app:constraint_referenced_ids="tv_target, pb_target, iv_countdown, tv_countdown"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_countdown" android:visibility="visible"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:constraint_referenced_ids="iv_countdown, tv_countdown"/>
 
     <TextView
         android:id="@+id/tv_target"
@@ -76,6 +82,15 @@
         app:layout_constraintRight_toRightOf="@+id/pb_target"
         tools:text="@string/countdown" android:textColor="@color/textColorSecondary"
         android:textSize="16sp" />
+
+    <TextView
+        android:visibility="gone" tools:visibility="visible"
+        android:id="@+id/tv_student"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_course"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_course"
+        tools:text="@string/person" android:textColor="@color/textColorSecondary"
+        android:textSize="18sp" />
 
     <View
         android:id="@+id/divider"

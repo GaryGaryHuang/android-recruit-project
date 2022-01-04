@@ -6,5 +6,10 @@
     <string name="cover">封面</string>
     <string name="countdown">倒數</string>
     <string name="fundraising">募資中</string>
-    <string name="course_started">已開課</string>
+    <string name="fundraising_success">募資成功</string>
+    <string name="fundraising_completed">募資結束</string>
+    <string name="course_started">上課囉</string>
+    <string name="day">天</string>
+    <string name="student">學生</string>
+    <string name="person">人</string>
 </resources>

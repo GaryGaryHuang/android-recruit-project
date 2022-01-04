@@ -10,5 +10,8 @@
     <color name="background_layout">#FFFFFF</color>
     <color name="background_layout_dark">#E7E7E7</color>
 
+    <color name="progress_fundraising">#FF7C00</color>
+    <color name="progress_completed">@color/colorPrimary</color>
+
     <color name="divider_color">#D8D8D8</color>
 </resources>
