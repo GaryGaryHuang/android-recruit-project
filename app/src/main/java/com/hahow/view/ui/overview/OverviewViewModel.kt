@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hahow.domain.Course
+import com.hahow.domain.CourseStatus
+import com.hahow.domain.toDomainCourseList
 import com.hahow.repository.course.CourseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +25,10 @@ class OverviewViewModel(private val courseRepository: CourseRepository) : ViewMo
 
     fun getCourse() = viewModelScope.launch(Dispatchers.Default) {
         _isLoading.postValue(true)
+        courseRepository.getCourseByAPI().run {
+            val domainData = this.toDomainCourseList().filter { it.status != CourseStatus.Unknown }
+            _courseList.postValue(domainData)
+        }
         _isLoading.postValue(false)
     }
 }

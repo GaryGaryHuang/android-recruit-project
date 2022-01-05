@@ -12,4 +12,5 @@
     <string name="day">天</string>
     <string name="student">學生</string>
     <string name="person">人</string>
+    <string name="empty"/>
 </resources>

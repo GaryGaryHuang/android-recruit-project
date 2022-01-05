@@ -8,5 +8,6 @@ data class Course(
     val status: CourseStatus,
     val goalPercentage: Float,
     val student: Int,
-    val proposalDueTime: Calendar,
+    val proposalDueTime: Calendar?,
+    val totalVideoLengthInSeconds: Int = 0,
 )

@@ -39,8 +39,8 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
             val displayStatus: String = context.getString(when(data.status) {
                 CourseStatus.Fundraising -> R.string.fundraising
                 CourseStatus.Success -> R.string.fundraising_success
-                CourseStatus.Completed -> R.string.fundraising_completed
                 CourseStatus.Published -> R.string.course_started
+                else -> R.string.empty
             })
             binding.tvCourseStatus.text = displayStatus
 
@@ -52,14 +52,14 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
 
                     binding.tvStudent.visibility = View.GONE
                     val days: Int = data.proposalDueTime.run {
-                        val today = Calendar.getInstance(this.timeZone)
+                        val today = Calendar.getInstance(this!!.timeZone)
                         calculateDayDifference(today)
                     }
                     binding.tvCountdown.text = "${context.getString(R.string.countdown)} $days ${context.getString(R.string.day)}"
                     binding.groupCountdown.visibility = View.VISIBLE
                     binding.groupFundraising.visibility = View.VISIBLE
                 }
-                CourseStatus.Success, CourseStatus.Completed -> {
+                CourseStatus.Success -> {
                     binding.pbTarget.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.progress_completed))
 
                     binding.tvStudent.visibility = View.GONE
@@ -72,6 +72,11 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
 
                     binding.tvStudent.text = "${context.getString(R.string.student)} ${data.student} ${context.getString(R.string.person)}"
                     binding.tvStudent.visibility = View.VISIBLE
+                }
+                CourseStatus.Unknown -> {
+                    binding.groupCountdown.visibility = View.GONE
+                    binding.groupFundraising.visibility = View.GONE
+                    binding.tvStudent.visibility = View.GONE
                 }
             }
 
