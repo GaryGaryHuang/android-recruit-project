@@ -10,6 +10,7 @@
     <string name="fundraising_completed">募資結束</string>
     <string name="course_started">上課囉</string>
     <string name="day">天</string>
+    <string name="hour">小時</string>
     <string name="student">學生</string>
     <string name="person">人</string>
     <string name="empty"/>

@@ -5,10 +5,10 @@ import java.io.BufferedReader
 import java.util.*
 import kotlin.math.abs
 
-//  return days
+//  return hours
 fun Calendar.calculateDayDifference(other: Calendar): Int {
     val difference = abs(this.timeInMillis - other.timeInMillis)
-    return (difference / (1000 * 60 * 60 * 24)).toInt()
+    return (difference / (1000 * 60 * 60)).toInt()
 }
 
 fun Context.loadJsonFromAsset(fileName: String): String? {

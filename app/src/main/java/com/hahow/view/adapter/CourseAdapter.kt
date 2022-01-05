@@ -51,11 +51,15 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
                     binding.pbTarget.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.progress_fundraising))
 
                     binding.tvStudent.visibility = View.GONE
-                    val days: Int = data.proposalDueTime.run {
+                    val hours: Int = data.proposalDueTime.run {
                         val today = Calendar.getInstance(this!!.timeZone)
                         calculateDayDifference(today)
                     }
-                    binding.tvCountdown.text = "${context.getString(R.string.countdown)} $days ${context.getString(R.string.day)}"
+                    binding.tvCountdown.text = if (hours < 24) {
+                        "${context.getString(R.string.countdown)} $hours ${context.getString(R.string.hour)}"
+                    } else {
+                        "${context.getString(R.string.countdown)} ${hours / 24} ${context.getString(R.string.day)}"
+                    }
                     binding.groupCountdown.visibility = View.VISIBLE
                     binding.groupFundraising.visibility = View.VISIBLE
                 }
