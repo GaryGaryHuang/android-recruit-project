@@ -55,9 +55,9 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
                         val today = Calendar.getInstance(this!!.timeZone)
                         val value = calculateHourDifference(today)
                         when {
+                            before(today) -> 0
                             value > 0 -> value
-                            after(today) -> 1
-                            else -> 0
+                            else -> 1
                         }
                     }
                     binding.tvCountdown.text = if (hours < 24) {
