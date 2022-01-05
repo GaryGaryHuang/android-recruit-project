@@ -14,7 +14,7 @@ import com.hahow.android_recruit_project.R
 import com.hahow.android_recruit_project.databinding.ItemCourseBinding
 import com.hahow.domain.Course
 import com.hahow.domain.CourseStatus
-import com.hahow.util.calculateDayDifference
+import com.hahow.util.calculateHourDifference
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -53,7 +53,7 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
                     binding.tvStudent.visibility = View.GONE
                     val hours: Int = data.proposalDueTime.run {
                         val today = Calendar.getInstance(this!!.timeZone)
-                        calculateDayDifference(today)
+                        calculateHourDifference(today)
                     }
                     binding.tvCountdown.text = if (hours < 24) {
                         "${context.getString(R.string.countdown)} $hours ${context.getString(R.string.hour)}"

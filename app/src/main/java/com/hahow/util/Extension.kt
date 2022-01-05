@@ -6,7 +6,7 @@ import java.util.*
 import kotlin.math.abs
 
 //  return hours
-fun Calendar.calculateDayDifference(other: Calendar): Int {
+fun Calendar.calculateHourDifference(other: Calendar): Int {
     val difference = abs(this.timeInMillis - other.timeInMillis)
     return (difference / (1000 * 60 * 60)).toInt()
 }

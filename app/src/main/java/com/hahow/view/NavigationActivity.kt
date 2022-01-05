@@ -19,25 +19,7 @@ import com.squareup.moshi.Moshi
 
 class NavigationActivity : AppCompatActivity(), OnActivityEvent {
     private lateinit var binding: ActivityNavigationBinding
-    private lateinit var mCourseRepository: CourseRepository
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initValues()
-
-        binding = ActivityNavigationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val navController = findNavController(R.id.nav_host)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_overview)
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.navView.setupWithNavController(navController)
-    }
-
-    private fun initValues() {
+    private val mCourseRepository: CourseRepository by lazy {
         val api = HahowApi.getInstance().also { api ->
             val fakeService = FakeHahowServiceImplement().also {
                 val dataString = loadJsonFromAsset("course.json") ?: "{}"
@@ -48,7 +30,21 @@ class NavigationActivity : AppCompatActivity(), OnActivityEvent {
         }
         val networkService = api.hahowService
         val table = Database.getInstance(this).courseTable()
-        mCourseRepository = CourseRepositoryImplement(networkService, table)
+        CourseRepositoryImplement(networkService, table)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityNavigationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val navController = findNavController(R.id.nav_host)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.navigation_overview)
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.navView.setupWithNavController(navController)
     }
 
     override fun getCourseRepository(): CourseRepository = mCourseRepository
