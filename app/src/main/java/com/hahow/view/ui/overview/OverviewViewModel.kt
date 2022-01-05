@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hahow.domain.Course
+import com.hahow.repository.course.CourseRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class OverviewViewModel : ViewModel() {
+class OverviewViewModel(private val courseRepository: CourseRepository) : ViewModel() {
     private val _courseList: MutableLiveData<List<Course>> = MutableLiveData(mutableListOf())
     val courseList: LiveData<List<Course>> = _courseList
     private val _message: MutableLiveData<String> = MutableLiveData()

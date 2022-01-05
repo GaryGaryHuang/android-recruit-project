@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.hahow.android_recruit_project.databinding.FragmentOverviewBinding
+import com.hahow.view.OnActivityEvent
 import com.hahow.view.adapter.CourseAdapter
+import com.hahow.view.ui.factory.OverviewModelFactory
 
 class OverviewFragment : Fragment() {
     private lateinit var binding: FragmentOverviewBinding
@@ -19,7 +21,8 @@ class OverviewFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentOverviewBinding.inflate(inflater, container, false)
-        overviewViewModel = ViewModelProvider(this)[OverviewViewModel::class.java]
+        val repository = (requireActivity() as OnActivityEvent).getCourseRepository()
+        overviewViewModel = ViewModelProvider(this, OverviewModelFactory(repository))[OverviewViewModel::class.java]
         setListeners()
         initValues()
         return binding.root
