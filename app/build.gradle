@@ -44,6 +44,8 @@ dependencies {
     kapt serializationKapt
     implementation network
     kapt network_kapt
+    implementation room
+    kapt room_kapt
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
