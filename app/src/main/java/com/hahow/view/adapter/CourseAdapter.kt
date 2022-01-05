@@ -53,7 +53,12 @@ class CourseAdapter : ListAdapter<Course, CourseAdapter.ViewHolder>(DiffCallback
                     binding.tvStudent.visibility = View.GONE
                     val hours: Int = data.proposalDueTime.run {
                         val today = Calendar.getInstance(this!!.timeZone)
-                        calculateHourDifference(today)
+                        val value = calculateHourDifference(today)
+                        when {
+                            value > 0 -> value
+                            after(today) -> 1
+                            else -> 0
+                        }
                     }
                     binding.tvCountdown.text = if (hours < 24) {
                         "${context.getString(R.string.countdown)} $hours ${context.getString(R.string.hour)}"
