@@ -8,7 +8,7 @@ import kotlin.math.abs
 //  return hours
 fun Calendar.calculateHourDifference(other: Calendar): Int {
     val difference = abs(this.timeInMillis - other.timeInMillis)
-    return (difference / (1000 * 60 * 60)).toInt()
+    return (difference / (1000f * 60 * 60)).toInt()
 }
 
 fun Context.loadJsonFromAsset(fileName: String): String? {

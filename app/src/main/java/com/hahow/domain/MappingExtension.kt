@@ -12,7 +12,7 @@ fun ApiCourseResponse.toDomainCourseList(): List<Course> {
             val format = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'", Locale.getDefault())
             val date = format.parse(this) ?: return@run null
             Calendar.getInstance().also { calendar ->
-                calendar.time = date
+                calendar.timeInMillis = date.time + TimeZone.getDefault().rawOffset
             }
         }
 
