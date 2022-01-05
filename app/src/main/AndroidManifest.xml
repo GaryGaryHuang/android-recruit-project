@@ -14,8 +14,7 @@
 
         <activity
             android:name="com.hahow.view.NavigationActivity"
-            android:exported="true"
-            android:label="@string/title_activity_navigation" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
