@@ -22,7 +22,7 @@ class OverviewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentOverviewBinding.inflate(inflater, container, false)
         val repository = (requireActivity() as OnActivityEvent).getCourseRepository()
-        overviewViewModel = ViewModelProvider(this, OverviewModelFactory(repository))[OverviewViewModel::class.java]
+        overviewViewModel = ViewModelProvider(this, OverviewModelFactory(requireActivity().application, repository))[OverviewViewModel::class.java]
         setListeners()
         initValues()
         return binding.root

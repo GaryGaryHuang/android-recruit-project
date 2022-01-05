@@ -14,4 +14,6 @@
     <string name="student">學生</string>
     <string name="person">人</string>
     <string name="empty"/>
+
+    <string name="network_disconnected">網路連線異常，請稍後再試</string>
 </resources>
