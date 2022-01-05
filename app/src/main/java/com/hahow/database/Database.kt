@@ -15,16 +15,12 @@ import com.hahow.database.table.CourseTable
 abstract class Database: RoomDatabase() {
     companion object {
         private var instance: Database? = null
-        fun getInstance(context: Context): Database {
-            if (instance == null) {
-                synchronized(this) {
-                    instance = Room.databaseBuilder(context, Database::class.java, Constants.DATABASE_NAME)
-                            .addMigrations(*Constants.MIGRATIONS)
-                            .build()
-                }
+        fun getInstance(context: Context): Database = instance ?: Room.databaseBuilder(context, Database::class.java, Constants.DATABASE_NAME)
+            .addMigrations(*Constants.MIGRATIONS)
+            .build()
+            .also {
+                instance = it
             }
-            return instance!!
-        }
     }
 
     abstract fun courseTable() : CourseTable
