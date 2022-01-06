@@ -1,25 +1,23 @@
 
-請使用 Kotlin 實作一個 app 首頁課程列表畫面，並寫文件或註解來解釋你的設計考量。除了指定需求外，你可以自由設計 model 和 UI 來提供更好的體驗。
+## 專案說明
+APP 讀取 Local data，顯示課程資訊列表
 
-## 技術規定
-- Deployment Target 為 Android 12。
-- 可使用第三方 library。
-- 請寫文件或註解來解釋你的設計考量。
+#### 架構
+- MVVM
+- Coroutines
+- Navigation component
+專案使用 Navigation component，並使用 BottomNavigationView，保留日後 UI 設計的彈性。因目前設計只有課程主頁，故隱藏下方的 BottomNavigationView
+- Room
+- Glide
 
-## 需求
-請實作一個在 app 首頁看到的課程列表，需求如下：
+#### 專案資料夾
+- database: Database 相關程式碼。Database 使用 Room Library 實作
+- domain: UI 相關的資料類別
+- network: 網路服務。模擬 API 獲取 Local data
+- repository: 提供 Model 使用網路或是資料庫，獲取資料
+- util: 常用的 Utility
+- view
 
 #### 資料
-- 請設計一個的 Data Loader 的抽象層來提供課程資料。
-- 請用專案中提供的 json file 實作上述 Data Loader 的一個實例。
-
-#### UI 設計
-- 依照課程當前狀態，顯示不同的標籤
-- 課程標題至多兩行
-- 本題目不用在意卡片尺寸、顏色、間距等細節，請將重點放在如何排版。（你仍然可以盡量符合示意圖）
-<img width="300" alt="CleanShot 2021-12-09 at 10 59 30@2x" src="https://user-images.githubusercontent.com/76472179/145350022-b4624fe0-2612-4fdb-950c-da6898ca4166.png">
-
-## 提交
-
-- 請下載或 fork Hahow Android Engineer 面試題目初始專案。
-- 請將成果上傳至 GitHub 並直接提供 repo 連結。
+- HahowApi.kt: 設定 FakeService，模擬 API response
+- CourseRepository.kt: 提供 Model 獲取資料的介面，目前資料獲取的方式，透過呼叫 getCourseByAPI() 取得
